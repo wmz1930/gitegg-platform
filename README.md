@@ -1,1 +1,2 @@
 # gitegg-platform
+SpringCloud企业级应用开发框架gitegg-platform底层公共组件开发框架代码

@@ -221,8 +221,8 @@ public class Result<T> {
      * @param flag
      * @return <T>  T 响应数据
      */
-    public static <T> Result<T> result(boolean flag) {
-        return flag ? Result.success("操作成功") : Result.error("操作失败");
+    public static <T> Result<Object> result(boolean flag) {
+        return flag  ? Result.success("操作成功") : Result.error("操作失败");
     }
 
 }

@@ -31,6 +31,31 @@ public class GitEggCodeGeneratorConstant {
     public static final String DICT_CODE_FIELDS = "dictCodeFields";
 
     /**
+     * FIELDS_JOIN
+     */
+    public static final String FIELDS_JOIN = "joinFields";
+
+    /**
+     * TABLES_JOIN
+     */
+    public static final String TABLES_JOIN = "joinTables";
+
+    /**
+     * TABLE_JOIN_CONFIG
+     */
+    public static final String TABLE_JOIN_CONFIG = "tableJoin";
+
+    /**
+     * COLUMN_NAME
+     */
+    public static final String COLUMN_NAME = "columnName";
+
+    /**
+     * ASSOCIATION_ID
+     */
+    public static final String ASSOCIATION_ID = "associationId";
+
+    /**
      * BASE_ENTITY_FIELD_LIST
      */
     public static final String BASE_ENTITY_FIELD_LIST = "baseEntityFieldList";
@@ -80,4 +105,78 @@ public class GitEggCodeGeneratorConstant {
      */
     public static final String CUSTOM_FILE_PATH_MAP = "customFilePathMap";
 
+    /**
+     * MAIN_FIELDS
+     */
+    public static final String MAIN_FIELDS = "mainFields";
+
+    /**
+     * MAIN_FORM_FIELDS
+     */
+    public static final String MAIN_FORM_FIELDS = "mainFormFields";
+
+    /**
+     * MAIN_DICTCODE_FIELDS
+     */
+    public static final String MAIN_DICTCODE_FIELDS = "mainDictCodeFields";
+
+    /**
+     * FIELDS_UNION
+     */
+    public static final String FIELDS_UNION = "fieldsUnion";
+
+    /**
+     * FORM_FIELDS_UNION
+     */
+    public static final String FORM_FIELDS_UNION = "formFieldsUnion";
+
+    /**
+     * DICT_CODE_FIELDS_UNION
+     */
+    public static final String DICT_CODE_FIELDS_UNION = "dictCodeFieldsUnion";
+
+    /**
+     * MAIN_PACKAGE_PATH
+     */
+    public static final String MAIN_PACKAGE_PATH = "mainPackagePath";
+
+    /**
+     * MAIN_DTO_NAME
+     */
+    public static final String MAIN_DTO_NAME = "mainDtoName";
+
+    /**
+     * MAIN_ENTITY_NAME
+     */
+    public static final String MAIN_ENTITY_NAME = "mainEntityName";
+
+    /**
+     * MAIN_TABLE_NAME
+     */
+    public static final String MAIN_TABLE_NAME = "mainTableName";
+
+    /**
+     * MAIN_TABLE
+     */
+    public static final String MAIN_TABLE = "mainTable";
+
+    /**
+     * MAIN_TABLE_ALIAS
+     */
+    public static final String MAIN_TABLE_ALIAS = "mainTableAlias";
+
+    /**
+     * MAIN_TABLE_FIELDS
+     */
+    public static final String MAIN_TABLE_FIELDS = "mainTableFields";
+
+    /**
+     * MAIN_CONTROLLER_PATH
+     */
+    public static final String MAIN_CONTROLLER_PATH = "mainControllerPath";
+
+    /**
+     * DTO
+     */
+    public static final String DTO = "DTO";
 }

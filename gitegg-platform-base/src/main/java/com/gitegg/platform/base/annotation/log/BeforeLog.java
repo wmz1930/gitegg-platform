@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * 
  * @ClassName: BeforeLog
  * @Description: 记录前置日志
- * @author gitegg
+ * @author GitEgg
  * @date 2019年4月27日 下午3:36:29
  *
  */

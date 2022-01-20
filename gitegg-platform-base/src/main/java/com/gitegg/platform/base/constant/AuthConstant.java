@@ -1,5 +1,11 @@
 package com.gitegg.platform.base.constant;
 
+/**
+ * @ClassName: AuthConstant
+ * @Description: 鉴权常量类
+ * @author GitEgg
+ * @since 2021-10-12
+ */
 public class AuthConstant {
 
     /**

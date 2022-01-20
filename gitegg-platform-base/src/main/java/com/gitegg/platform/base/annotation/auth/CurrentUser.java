@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * 
  * @ClassName: CurrentUser
  * @Description: 在Controller的方法参数中使用此注解，该方法在映射时会注入当前登录的User对象
- * @author gitegg
+ * @author GitEgg
  * @date 2019年5月18日 下午11:52:43
  *
  */

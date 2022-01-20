@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>gitegg-platform-boot</artifactId>
+    <artifactId>gitegg-platform-log</artifactId>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
@@ -17,21 +17,6 @@
         <dependency>
             <groupId>com.gitegg.platform</groupId>
             <artifactId>gitegg-platform-base</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.gitegg.platform</groupId>
-            <artifactId>gitegg-platform-log</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <!-- 去除springboot默认的logback配置-->
-            <exclusions>
-                <exclusion>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-starter-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -68,20 +53,21 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-        <!-- spring boot 健康监控 -->
+        <!-- 为了使用HttpServletRequest和HttpServletResponse -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 去除springboot默认的logback配置-->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
-            <groupId>com.gitegg.platform</groupId>
-            <artifactId>gitegg-platform-swagger</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <!-- Excel 数据导入导出 -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>easyexcel</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-spring-boot</artifactId>
         </dependency>
     </dependencies>
 

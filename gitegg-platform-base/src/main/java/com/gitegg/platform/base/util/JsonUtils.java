@@ -14,6 +14,7 @@ import java.util.Map;
 
 /**
  * Json Jackson 通用工具类
+ * @author GitEgg
  */
 @Slf4j
 public class JsonUtils {

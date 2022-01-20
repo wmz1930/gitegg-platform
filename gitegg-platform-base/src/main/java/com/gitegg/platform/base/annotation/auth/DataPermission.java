@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 /**
  * 数据权限过滤
  *
- * @author gitegg
+ * @author GitEgg
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

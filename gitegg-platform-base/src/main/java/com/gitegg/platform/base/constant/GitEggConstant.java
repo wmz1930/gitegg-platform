@@ -3,7 +3,7 @@ package com.gitegg.platform.base.constant;
 /**
  * @ClassName: GitEggConstant
  * @Description: 常量类
- * @author gitegg
+ * @author GitEgg
  * @since 2021-10-12
  */
 public class GitEggConstant {

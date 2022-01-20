@@ -8,11 +8,9 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * <p>
  * 校验某个对象字段是否存在
- * </p>
  *
- * @author gitegg
+ * @author GitEgg
  * @since 2019-05-26
  */
 @Data

@@ -26,6 +26,9 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
 
+/**
+ * @author GitEgg
+ */
 @Slf4j
 @RestControllerAdvice
 public class GitEggControllerAdvice {
@@ -87,6 +90,7 @@ public class GitEggControllerAdvice {
             HttpMessageNotReadableException.class
     })
     public Result handlerSpringAOPException(Exception exception) {
+        log.error("非法请求异常:{}", exception);
         Result result = Result.error(ResultCodeEnum.ILLEGAL_REQUEST, errorSystem + exception.getLocalizedMessage());
         return result;
     }
@@ -96,6 +100,7 @@ public class GitEggControllerAdvice {
      */
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     public Result handlerSpringAOPException(MethodArgumentTypeMismatchException exception) {
+        log.error("非法请求异常-参数类型不匹配:{}", exception);
         Result result = Result.error(ResultCodeEnum.PARAM_TYPE_MISMATCH, errorSystem + exception.getLocalizedMessage());
         return result;
     }
@@ -111,6 +116,7 @@ public class GitEggControllerAdvice {
                 .map(t -> t.getField() + t.getDefaultMessage() + ";")
                 .forEach(e -> stringBuffer.append(e));
         String errorMessage = stringBuffer.toString();
+        log.error("非法请求异常-参数校验异常:{}", errorMessage);
         Result result = Result.error(ResultCodeEnum.PARAM_VALID_ERROR, errorSystem + errorMessage);
         return result;
     }
@@ -121,6 +127,7 @@ public class GitEggControllerAdvice {
     @ExceptionHandler(value = {ConstraintViolationException.class})
     public Result handlerConstraintViolationException(ConstraintViolationException constraintViolationException) {
         String errorMessage = constraintViolationException.getLocalizedMessage();
+        log.error("非法请求异常-参数校验异常:{}", errorMessage);
         Result result = Result.error(ResultCodeEnum.PARAM_VALID_ERROR, errorSystem + errorMessage);
         return result;
     }
@@ -131,6 +138,7 @@ public class GitEggControllerAdvice {
     @ExceptionHandler(value = {BusinessException.class})
     public Result handlerCustomException(BusinessException exception) {
         String errorMessage = exception.getMsg();
+        log.error("操作异常:{}", errorMessage);
         Result result = Result.error(exception.getCode(), errorSystem + errorMessage);
         return result;
     }
@@ -141,6 +149,7 @@ public class GitEggControllerAdvice {
     @ExceptionHandler(value = {SystemException.class})
     public Result handlerCustomException(SystemException exception) {
         String errorMessage = exception.getMsg();
+        log.error("系统异常:{}", errorMessage);
         Result result = Result.error(exception.getCode(), errorSystem + errorMessage);
         return result;
     }

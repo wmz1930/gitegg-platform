@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
+/**
+ * @author GitEgg
+ */
 public class GitEggAuthUtils {
 
     /**

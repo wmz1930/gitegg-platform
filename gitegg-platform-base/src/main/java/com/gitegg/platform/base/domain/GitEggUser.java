@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @author gitegg
+ * @author GitEgg
  */
 @Data
 @ApiModel(description = "用户信息")

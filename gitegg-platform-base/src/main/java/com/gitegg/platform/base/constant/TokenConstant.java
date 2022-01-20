@@ -1,5 +1,11 @@
 package com.gitegg.platform.base.constant;
 
+/**
+ * @ClassName: TokenConstant
+ * @Description: Token常量类
+ * @author GitEgg
+ * @since 2021-10-12
+ */
 public class TokenConstant {
 
     public static final String AUTH_HEADER = "Auth";

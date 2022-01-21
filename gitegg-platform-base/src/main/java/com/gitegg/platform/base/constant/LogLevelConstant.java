@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Level;
 /**
  * 自定义日志级别
  * 业务操作日志级别(级别越高，数字越小) off 0, fatal 100, error 200, warn 300, info 400, debug 500
+ * warn action visit
  * @author GitEgg
  */
 public class LogLevelConstant {

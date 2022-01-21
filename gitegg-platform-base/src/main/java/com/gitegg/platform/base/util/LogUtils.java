@@ -19,7 +19,7 @@ public class LogUtils {
      * @return
      * @throws Exception
      */
-    public static void action(String message, Object... params) throws Exception {
+    public static void action(String message, Object... params) {
         logger.log(LogLevelConstant.ACTION_LEVEL, message, params);
     }
 
@@ -31,8 +31,8 @@ public class LogUtils {
      * @return
      * @throws Exception
      */
-    public static void visit( String message, Object... params) throws Exception {
-        logger.log(LogLevelConstant.ACTION_LEVEL, message, params);
+    public static void visit( String message, Object... params) {
+        logger.log(LogLevelConstant.VISIT_LEVEL, message, params);
     }
 
 }

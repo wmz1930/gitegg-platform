@@ -18,6 +18,13 @@
         <property name="LOG_MAX_HISTORY" value="60"/>
     </Properties>
 
+    <CustomLevels>
+        <!--操作日志-->
+        <CustomLevel name="ACTION" intLevel="310" />
+        <!--访问日志-->
+        <CustomLevel name="VISIT" intLevel="320" />
+    </CustomLevels>
+
     <appenders>
         <!-- 控制台输出 -->
         <console name="Console" target="SYSTEM_OUT">
@@ -87,6 +94,36 @@
             <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
         </RollingRandomAccessFile>
 
+        <!-- 这个会打印出所有的action级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <RollingRandomAccessFile name="RollingFileAction" fileName="${FILE_PATH}/action.log"
+                                 filePattern="${FILE_PATH}/ACTION-%d{yyyy-MM-dd}_%i.log.gz">
+            <!--只输出action level级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <LevelRangeFilter minLevel="ACTION" maxLevel="ACTION" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，默认是1 hour-->
+                <TimeBasedTriggeringPolicy interval="${FILE_WRITE_INTERVAL}"/>
+                <SizeBasedTriggeringPolicy size="${FILE_STORE_MAX}"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+            <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
+        </RollingRandomAccessFile>
+
+        <!-- 这个会打印出所有的visit级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <RollingRandomAccessFile name="RollingFileVisit" fileName="${FILE_PATH}/visit.log"
+                                 filePattern="${FILE_PATH}/VISIT-%d{yyyy-MM-dd}_%i.log.gz">
+            <!--只输出visit level级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
+            <LevelRangeFilter minLevel="VISIT" maxLevel="VISIT" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <!--interval属性用来指定多久滚动一次，默认是1 hour-->
+                <TimeBasedTriggeringPolicy interval="${FILE_WRITE_INTERVAL}"/>
+                <SizeBasedTriggeringPolicy size="${FILE_STORE_MAX}"/>
+            </Policies>
+            <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
+            <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
+        </RollingRandomAccessFile>
+
     </appenders>
 
     <!-- Logger节点用来单独指定日志的形式，比如要为指定包下的class指定不同的日志级别等 -->
@@ -109,6 +146,8 @@
             <AppenderRef ref="RollingFileInfo"/>
             <AppenderRef ref="RollingFileWarn"/>
             <AppenderRef ref="RollingFileError"/>
+            <AppenderRef ref="RollingFileAction"/>
+            <AppenderRef ref="RollingFileVisit"/>
         </AsyncLogger>
 
         <root level="trace">
@@ -117,6 +156,8 @@
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>
             <appender-ref ref="RollingFileError"/>
+            <AppenderRef ref="RollingFileAction"/>
+            <AppenderRef ref="RollingFileVisit"/>
         </root>
     </loggers>
 

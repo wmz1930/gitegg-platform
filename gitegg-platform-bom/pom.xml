@@ -53,6 +53,8 @@
         <log4j2.version>2.17.1</log4j2.version>
         <!-- log4j2支持异步日志，导入disruptor依赖，不需要支持异步日志，也可以去掉该依赖包 -->
         <log4j2.disruptor.version>3.4.4</log4j2.disruptor.version>
+        <!-- log4j2记录到kafka需要的依赖 -->
+        <kafka.clients.version>3.1.0</kafka.clients.version>
         <!-- skywalking-log4j2 traceId -->
         <skywalking.log4j2.version>6.4.0</skywalking.log4j2.version>
         <!-- Freemarker增强工具 -->
@@ -353,6 +355,12 @@
                 <groupId>com.lmax</groupId>
                 <artifactId>disruptor</artifactId>
                 <version>${log4j2.disruptor.version}</version>
+            </dependency>
+            <!-- log4j2 kafka appender -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.clients.version}</version>
             </dependency>
             <!-- freemarker -->
             <dependency>

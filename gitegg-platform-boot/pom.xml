@@ -47,6 +47,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+        </dependency>
         <!-- skywalking-log4j2链路id -->
         <dependency>
             <groupId>org.apache.skywalking</groupId>

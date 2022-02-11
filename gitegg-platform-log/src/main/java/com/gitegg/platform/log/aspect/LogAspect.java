@@ -6,9 +6,8 @@ import com.gitegg.platform.base.annotation.log.BeforeLog;
 import com.gitegg.platform.base.constant.LogLevelConstant;
 import com.gitegg.platform.base.domain.GitEggLog;
 import com.gitegg.platform.base.util.JsonUtils;
-import com.gitegg.platform.base.util.LogUtils;
 import lombok.SneakyThrows;
-import lombok.extern.slf4j.Slf4j;
+import lombok.extern.log4j.Log4j2;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -23,13 +22,13 @@ import java.lang.reflect.Method;
 
 /**
  * 
- * @ClassName: SystemLogAspect
+ * @ClassName: LogAspect
  * @Description:
- * @author jeebase-DN-JBKGJ72
- * @date 2016年4月27日 下午4:02:12
+ * @author GitEgg
+ * @date 2019年4月27日 下午4:02:12
  *
  */
-@Slf4j
+@Log4j2
 @Aspect
 @Component
 public class LogAspect {
@@ -164,7 +163,7 @@ public class LogAspect {
             gitEggLog.setOutParams(String.valueOf(outParams));
             gitEggLog.setOperationIp(ip);
             gitEggLog.setOperationName(operationName);
-            LogUtils.action(LogLevelConstant.ACTION_LEVEL_MESSAGE, JsonUtils.objToJson(gitEggLog));
+            log.log(LogLevelConstant.OPERATION_LEVEL,LogLevelConstant.OPERATION_LEVEL_MESSAGE, JsonUtils.objToJson(gitEggLog));
         } catch (Exception e) {
             log.error("addSysLog日志记录异常,异常信息:{}", e.getMessage());
             throw e;

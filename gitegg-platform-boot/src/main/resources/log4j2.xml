@@ -20,9 +20,9 @@
 
     <CustomLevels>
         <!--操作日志-->
-        <CustomLevel name="ACTION" intLevel="310" />
+        <CustomLevel name="OPERATION" intLevel="310" />
         <!--访问日志-->
-        <CustomLevel name="VISIT" intLevel="320" />
+        <CustomLevel name="API" intLevel="320" />
     </CustomLevels>
 
     <appenders>
@@ -94,11 +94,11 @@
             <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
         </RollingRandomAccessFile>
 
-        <!-- 这个会打印出所有的action级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-        <RollingRandomAccessFile name="RollingFileAction" fileName="${FILE_PATH}/action.log"
-                                 filePattern="${FILE_PATH}/ACTION-%d{yyyy-MM-dd}_%i.log.gz">
+        <!-- 这个会打印出所有的operation级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <RollingRandomAccessFile name="RollingFileOperation" fileName="${FILE_PATH}/operation.log"
+                                 filePattern="${FILE_PATH}/OPERATION-%d{yyyy-MM-dd}_%i.log.gz">
             <!--只输出action level级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <LevelRangeFilter minLevel="ACTION" maxLevel="ACTION" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LevelRangeFilter minLevel="OPERATION" maxLevel="OPERATION" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <!--interval属性用来指定多久滚动一次，默认是1 hour-->
@@ -109,11 +109,11 @@
             <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
         </RollingRandomAccessFile>
 
-        <!-- 这个会打印出所有的visit级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
-        <RollingRandomAccessFile name="RollingFileVisit" fileName="${FILE_PATH}/visit.log"
-                                 filePattern="${FILE_PATH}/VISIT-%d{yyyy-MM-dd}_%i.log.gz">
+        <!-- 这个会打印出所有的api级别的信息，每次大小超过size，则这size大小的日志会自动存入按年份-月份建立的文件夹下面并进行压缩，作为存档 -->
+        <RollingRandomAccessFile name="RollingFileApi" fileName="${FILE_PATH}/api.log"
+                                 filePattern="${FILE_PATH}/API-%d{yyyy-MM-dd}_%i.log.gz">
             <!--只输出visit level级别的信息（onMatch），其他的直接拒绝（onMismatch）-->
-            <LevelRangeFilter minLevel="VISIT" maxLevel="VISIT" onMatch="ACCEPT" onMismatch="DENY"/>
+            <LevelRangeFilter minLevel="API" maxLevel="API" onMatch="ACCEPT" onMismatch="DENY"/>
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <!--interval属性用来指定多久滚动一次，默认是1 hour-->
@@ -123,6 +123,20 @@
             <!-- DefaultRolloverStrategy属性如不设置，则默认为最多同一文件夹下7个文件开始覆盖-->
             <DefaultRolloverStrategy max="${LOG_MAX_HISTORY}"/>
         </RollingRandomAccessFile>
+
+        <Kafka name="KafkaOperationLog" topic="operation_log" ignoreExceptions="false">
+            <LevelRangeFilter minLevel="OPERATION" maxLevel="OPERATION" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Property name="bootstrap.servers">172.16.20.220:9092,172.16.20.221:9092,172.16.20.222:9092</Property>
+            <Property name="max.block.ms">2000</Property>
+        </Kafka>
+
+        <Kafka name="KafkaApiLog" topic="api_log" ignoreExceptions="false">
+            <LevelRangeFilter minLevel="API" maxLevel="API" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Property name="bootstrap.servers">172.16.20.220:9092,172.16.20.221:9092,172.16.20.222:9092</Property>
+            <Property name="max.block.ms">2000</Property>
+        </Kafka>
 
     </appenders>
 
@@ -146,8 +160,10 @@
             <AppenderRef ref="RollingFileInfo"/>
             <AppenderRef ref="RollingFileWarn"/>
             <AppenderRef ref="RollingFileError"/>
-            <AppenderRef ref="RollingFileAction"/>
-            <AppenderRef ref="RollingFileVisit"/>
+            <AppenderRef ref="RollingFileOperation"/>
+            <AppenderRef ref="RollingFileApi"/>
+            <AppenderRef ref="KafkaOperationLog"/>
+            <AppenderRef ref="KafkaApiLog"/>
         </AsyncLogger>
 
         <root level="trace">
@@ -156,8 +172,10 @@
             <appender-ref ref="RollingFileInfo"/>
             <appender-ref ref="RollingFileWarn"/>
             <appender-ref ref="RollingFileError"/>
-            <AppenderRef ref="RollingFileAction"/>
-            <AppenderRef ref="RollingFileVisit"/>
+            <AppenderRef ref="RollingFileOperation"/>
+            <AppenderRef ref="RollingFileApi"/>
+            <AppenderRef ref="KafkaOperationLog"/>
+            <AppenderRef ref="KafkaApiLog"/>
         </root>
     </loggers>
 

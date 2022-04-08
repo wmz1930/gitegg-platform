@@ -85,3 +85,9 @@ hs_err_pid*
 /gitegg-platform-swagger/target
 /gitegg-platform-wechat/gitegg-platform-wechat.iml
 /gitegg-platform-wechat/target
+/gitegg-platform-log/gitegg-platform-log.iml
+/gitegg-platform-log/target/maven-archiver/pom.properties
+/gitegg-platform-log/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+/gitegg-platform-log/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+/gitegg-platform-log/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
+/gitegg-platform-log/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst

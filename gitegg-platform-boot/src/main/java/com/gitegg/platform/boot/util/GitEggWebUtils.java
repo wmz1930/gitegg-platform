@@ -21,4 +21,18 @@ public class GitEggWebUtils extends WebUtils {
         return (requestAttributes == null) ? null : ((ServletRequestAttributes) requestAttributes).getRequest();
     }
 
+    /**
+     * 获取 SessionId
+     *
+     */
+    public static String getSessionId() {
+        HttpServletRequest request = getRequest();
+        if (null != request && null != request.getSession(false))
+        {
+            return request.getSession(false).getId();
+        }else{
+            return null;
+        }
+    }
+
 }

@@ -22,6 +22,11 @@
             <groupId>com.gitegg.platform</groupId>
             <artifactId>gitegg-platform-log</artifactId>
         </dependency>
+        <!-- gitegg cache自定义扩展 -->
+        <dependency>
+            <groupId>com.gitegg.platform</groupId>
+            <artifactId>gitegg-platform-cache</artifactId>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

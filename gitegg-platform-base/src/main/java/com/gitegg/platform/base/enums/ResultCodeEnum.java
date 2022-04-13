@@ -130,6 +130,11 @@ public enum ResultCodeEnum {
     SYSTEM_BUSY(429, "系统繁忙，请稍后重试"),
 
     /**
+     * 重复请求异常
+     */
+    RESUBMIT_LOCK(430, "您的操作请求已提交，请勿重复提交"),
+
+    /**
      * 系统错误
      */
     ERROR(500, "系统错误");

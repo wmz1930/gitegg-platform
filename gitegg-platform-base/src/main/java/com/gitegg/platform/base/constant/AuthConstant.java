@@ -39,7 +39,12 @@ public class AuthConstant {
     public static final String REFRESH_TOKEN = "RefreshToken";
 
     /**
-     * JWT令牌前缀
+     * Basic认证前缀
+     */
+    public static final String JWT_TOKEN_PREFIX_BASIC = "Basic ";
+
+    /**
+     * Bearer认证 JWT令牌前缀
      */
     public static final String JWT_TOKEN_PREFIX = "Bearer ";
 

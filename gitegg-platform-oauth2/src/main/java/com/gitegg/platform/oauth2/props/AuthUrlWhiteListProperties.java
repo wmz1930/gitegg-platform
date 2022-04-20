@@ -31,4 +31,9 @@ public class AuthUrlWhiteListProperties {
      */
     private List<String> authUrls;
 
+    /**
+     * 网关放行，由认证中心进行认证的url，比如单点登录
+     */
+    private List<String> tokenUrls;
+
 }

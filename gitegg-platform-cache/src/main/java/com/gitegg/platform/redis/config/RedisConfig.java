@@ -38,9 +38,11 @@ public class RedisConfig {
         // 防止乱码
         RedisSerializer stringSerializer = new StringRedisSerializer();
         redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer); //解决json转换
+        //解决json转换
+        redisTemplate.setValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);//解决哈唏值转换
+        //解决哈唏值转换
+        redisTemplate.setHashValueSerializer(jackson2JsonRedisSerializer);
         redisTemplate.afterPropertiesSet();
         return redisTemplate;
     }

@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>com.gitegg.platform</groupId>
-            <artifactId>gitegg-platform-redis</artifactId>
+            <artifactId>gitegg-platform-cache</artifactId>
         </dependency>
     </dependencies>
 </project>

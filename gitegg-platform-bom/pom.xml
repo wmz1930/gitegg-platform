@@ -161,11 +161,6 @@
                 <artifactId>gitegg-platform-cache</artifactId>
                 <version>${gitegg.project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.gitegg.platform</groupId>
-                <artifactId>gitegg-platform-redis</artifactId>
-                <version>${gitegg.project.version}</version>
-            </dependency>
             <!-- gitegg oauth2自定义扩展 -->
             <dependency>
                 <groupId>com.gitegg.platform</groupId>

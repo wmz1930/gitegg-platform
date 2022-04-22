@@ -91,3 +91,5 @@ hs_err_pid*
 /gitegg-platform-log/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 /gitegg-platform-log/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst
 /gitegg-platform-log/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
+*.versionsBackup
+target

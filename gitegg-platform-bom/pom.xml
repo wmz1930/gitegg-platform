@@ -83,6 +83,10 @@
         <dfs.qiniu.version>7.5.0</dfs.qiniu.version>
         <!-- Excel 数据导入导出 -->
         <easyexcel.version>2.2.10</easyexcel.version>
+        <!-- JustAuth第三方登录 -->
+        <just.auth.version>1.16.5</just.auth.version>
+        <!-- JustAuth SpringBoot集成 -->
+        <just.auth.spring.version>1.4.0</just.auth.spring.version>
         <!-- SpringBoot版本号 -->
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <!-- SpringCloud版本号 -->
@@ -441,6 +445,18 @@
                 <groupId>com.qiniu</groupId>
                 <artifactId>qiniu-java-sdk</artifactId>
                 <version>${dfs.qiniu.version}</version>
+            </dependency>
+            <!--JustAuth第三方登录-->
+            <dependency>
+                <groupId>me.zhyd.oauth</groupId>
+                <artifactId>JustAuth</artifactId>
+                <version>${just.auth.version}</version>
+            </dependency>
+            <!--JustAuth SpringBoot集成-->
+            <dependency>
+                <groupId>com.xkcoding.justauth</groupId>
+                <artifactId>justauth-spring-boot-starter</artifactId>
+                <version>${just.auth.spring.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -255,6 +255,12 @@
                 <artifactId>gitegg-platform-dfs-starter</artifactId>
                 <version>${gitegg.project.version}</version>
             </dependency>
+            <!-- gitegg 第三方登录 -->
+            <dependency>
+                <groupId>com.gitegg.platform</groupId>
+                <artifactId>gitegg-platform-justauth</artifactId>
+                <version>${gitegg.project.version}</version>
+            </dependency>
             <!-- gitegg 聚合支付自定义扩展 -->
             <dependency>
                 <groupId>com.gitegg.platform</groupId>
@@ -463,7 +469,7 @@
 
     <build>
         <plugins>
-            <!-- GPG -->
+            <!-- GPG
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -476,7 +482,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 

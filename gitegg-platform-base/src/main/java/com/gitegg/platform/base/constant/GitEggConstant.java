@@ -89,16 +89,29 @@ public class GitEggConstant {
     }
 
     /**
+     * 用户状态
+     */
+    public class UserStatus {
+
+        public static final int DISABLE = 0;
+
+        public static final int ENABLE = 1;
+
+        public static final int NOT_ACTIVE = 2;
+
+    }
+    
+    /**
      * 地址
      */
     public class Address {
-
+        
         public static final int PROVINCE = 0;
-
+        
         public static final int CITY = 1;
-
+        
         public static final int AREA = 2;
-
+        
     }
 
     /**

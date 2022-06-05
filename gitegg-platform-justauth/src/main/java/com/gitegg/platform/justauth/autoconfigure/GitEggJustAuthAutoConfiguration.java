@@ -2,15 +2,15 @@ package com.gitegg.platform.justauth.autoconfigure;
 
 import com.gitegg.platform.justauth.factory.GitEggAuthRequestFactory;
 import com.xkcoding.justauth.AuthRequestFactory;
-import com.xkcoding.justauth.autoconfigure.JustAuthAutoConfiguration;
 import com.xkcoding.justauth.autoconfigure.JustAuthProperties;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import me.zhyd.oauth.cache.AuthStateCache;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * <p>
@@ -21,14 +21,17 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 @EnableConfigurationProperties(JustAuthProperties.class)
-public class GitEggJustAuthAutoConfiguration extends JustAuthAutoConfiguration {
+public class GitEggJustAuthAutoConfiguration {
 
+    private final AuthRequestFactory authRequestFactory;
+    
+    private final RedisTemplate redisTemplate;
+    
     @Bean
     @ConditionalOnProperty(prefix = "justauth", value = "enabled", havingValue = "true", matchIfMissing = true)
-    @Override
-    public AuthRequestFactory authRequestFactory(JustAuthProperties properties, @Qualifier("authStateCache") AuthStateCache authStateCache) {
-        return new GitEggAuthRequestFactory(properties, authStateCache);
+    public GitEggAuthRequestFactory gitEggAuthRequestFactory(JustAuthProperties justAuthProperties) {
+        return new GitEggAuthRequestFactory(authRequestFactory, redisTemplate, justAuthProperties);
     }
-
 }

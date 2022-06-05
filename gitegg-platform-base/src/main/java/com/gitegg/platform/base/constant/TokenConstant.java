@@ -49,6 +49,8 @@ public class TokenConstant {
     public static final String PASSWORD = "password";
 
     public static final String PHONE_NUMBER = "phoneNumber";
+    
+    public static final String SOCIAL_KEY = "social_key";
 
     public static final String SMS_CODE = "smsCode";
 

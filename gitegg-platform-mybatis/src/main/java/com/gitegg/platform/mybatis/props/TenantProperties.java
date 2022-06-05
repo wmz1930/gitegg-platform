@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * 白名单配置
+ * @author GitEgg
  */
 @Data
 @Configuration

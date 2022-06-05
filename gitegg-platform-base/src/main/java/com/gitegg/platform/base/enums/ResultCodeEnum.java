@@ -137,12 +137,67 @@ public enum ResultCodeEnum {
     /**
      * 系统错误
      */
-    ERROR(500, "系统错误");
+    ERROR(500, "系统错误"),
+    
+    /**
+     * 未找到绑定关系
+     */
+    BIND_NOT_FOUND(601, "未找到绑定关系"),
+    
+    /**
+     * 当前有第三方用户已绑定多个用户
+     */
+    BIND_MULTIPLE(602, "当前有第三方用户已绑定多个用户"),
+    
+    /**
+     * 当前用户已绑定，请先到个人中心解绑
+     */
+    BIND_ALREADY(603, "当前用户已绑定，请先到个人中心解绑"),
+    
+    /**
+     * 当前手机号超出最大条数
+     */
+    SMS_LIMIT(701, "当前手机号超出最大发送短信条数"),
+    
+    /**
+     * 短信发送失败
+     */
+    SMS_SEND_FAILED(702, "短信发送失败"),
+    
+    /**
+     * 短信发送发生错误
+     */
+    SMS_SEND_ERROR(703, "短信发送发生错误"),
+    
+    /**
+     * 未找到符合条件的短信模板
+     */
+    SMS_TEMPLATE_NOT_FOUND(704, "未找到符合条件的短信模板"),
+    
+    /**
+     * 验证码已过期
+     */
+    SMS_CODE_EXPIRE(705, "验证码已过期"),
+    
+    /**
+     * 验证码错误
+     */
+    SMS_CODE_ERROR(706, "验证码错误"),
+    
+    /**
+     * 验证码不能为空
+     */
+    SMS_CODE_NOT_EMPTY(707, "验证码不能为空"),
+    
+    /**
+     * 验证码错误或者已过期
+     */
+    SMS_CODE_EXPIRE_OR_EXPIRE(708, "验证码错误或者已过期，请重新输入或获取");
 
     public int code;
 
     public String msg;
-
+    
     ResultCodeEnum(int code, String msg) {
         this.code = code;
         this.msg = msg;

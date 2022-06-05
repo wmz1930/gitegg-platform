@@ -31,6 +31,7 @@ public class GitEggDataPermissionInterceptor extends DataPermissionInterceptor {
 
     private GitEggDataPermissionHandler dataPermissionHandler;
 
+    @Override
     public void beforeQuery(Executor executor, MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
         if (!InterceptorIgnoreHelper.willIgnoreDataPermission(ms.getId())) {
             PluginUtils.MPBoundSql mpBs = PluginUtils.mpBoundSql(boundSql);
@@ -38,6 +39,7 @@ public class GitEggDataPermissionInterceptor extends DataPermissionInterceptor {
         }
     }
 
+    @Override
     protected void processSelect(Select select, int index, String sql, Object obj) {
         SelectBody selectBody = select.getSelectBody();
         if (selectBody instanceof PlainSelect) {

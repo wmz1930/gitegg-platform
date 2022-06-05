@@ -93,3 +93,4 @@ hs_err_pid*
 /gitegg-platform-log/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst
 *.versionsBackup
 target
+/gitegg-platform-justauth/gitegg-platform-justauth.iml

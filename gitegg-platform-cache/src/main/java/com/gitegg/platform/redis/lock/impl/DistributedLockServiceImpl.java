@@ -19,8 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class DistributedLockServiceImpl implements IDistributedLockService {
 
     private final RedissonClient redissonClient;
-
-
+    
     @Override
     public void lock(String lockKey) {
         RLock lock = redissonClient.getLock(lockKey);

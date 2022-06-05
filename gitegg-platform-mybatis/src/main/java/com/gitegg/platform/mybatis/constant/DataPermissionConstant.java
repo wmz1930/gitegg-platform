@@ -1,5 +1,8 @@
 package com.gitegg.platform.mybatis.constant;
 
+/**
+ * @author GitEgg
+ */
 public class DataPermissionConstant {
 
     /**

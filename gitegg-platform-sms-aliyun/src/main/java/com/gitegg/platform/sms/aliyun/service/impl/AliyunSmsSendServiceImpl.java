@@ -6,18 +6,20 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.utils.StringUtils;
+import com.gitegg.platform.base.enums.ResultCodeEnum;
+import com.gitegg.platform.base.result.Result;
 import com.gitegg.platform.base.util.JsonUtils;
+import com.gitegg.platform.sms.aliyun.props.AliyunSmsProperties;
 import com.gitegg.platform.sms.domain.SmsData;
-import com.gitegg.platform.sms.domain.SmsResponse;
 import com.gitegg.platform.sms.service.ISmsSendService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import com.gitegg.platform.sms.aliyun.props.AliyunSmsProperties;
 
 import java.util.Collection;
 
 /**
  * 阿里云短信发送
+ * @author GitEgg
  */
 @Slf4j
 @AllArgsConstructor
@@ -30,8 +32,7 @@ public class AliyunSmsSendServiceImpl implements ISmsSendService {
     private final IAcsClient acsClient;
 
     @Override
-    public SmsResponse sendSms(SmsData smsData, Collection<String> phoneNumbers) {
-        SmsResponse smsResponse = new SmsResponse();
+    public Result<?> sendSms(SmsData smsData, Collection<String> phoneNumbers) {
         SendSmsRequest request = new SendSmsRequest();
         request.setSysMethod(MethodType.POST);
         request.setPhoneNumbers(StrUtil.join(",", phoneNumbers));
@@ -41,20 +42,17 @@ public class AliyunSmsSendServiceImpl implements ISmsSendService {
         try {
             SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
             if (null != sendSmsResponse && !StringUtils.isEmpty(sendSmsResponse.getCode())) {
-                if (this.successCode.equals(sendSmsResponse.getCode())) {
-                    smsResponse.setSuccess(true);
+                if (AliyunSmsSendServiceImpl.successCode.equals(sendSmsResponse.getCode())) {
+                    return Result.success(sendSmsResponse.getMessage());
                 } else {
                     log.error("Send Aliyun Sms Fail: [code={}, message={}]", sendSmsResponse.getCode(), sendSmsResponse.getMessage());
+                    return Result.error(ResultCodeEnum.SMS_SEND_FAILED, sendSmsResponse.getMessage());
                 }
-                smsResponse.setCode(sendSmsResponse.getCode());
-                smsResponse.setMessage(sendSmsResponse.getMessage());
             }
         } catch (Exception e) {
-            e.printStackTrace();
             log.error("Send Aliyun Sms Fail: {}", e);
-            smsResponse.setMessage("Send Aliyun Sms Fail!");
         }
-        return smsResponse;
+        return Result.error(ResultCodeEnum.SMS_SEND_ERROR);
     }
 
 

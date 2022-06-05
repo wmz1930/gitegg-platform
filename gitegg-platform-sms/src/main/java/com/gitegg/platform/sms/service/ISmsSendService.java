@@ -1,14 +1,15 @@
 package com.gitegg.platform.sms.service;
 
 import cn.hutool.core.util.StrUtil;
+import com.gitegg.platform.base.result.Result;
 import com.gitegg.platform.sms.domain.SmsData;
-import com.gitegg.platform.sms.domain.SmsResponse;
 
 import java.util.Collection;
 import java.util.Collections;
 
 /**
  * 短信发送接口
+ * @author GitEgg
  */
 public interface ISmsSendService {
 
@@ -18,9 +19,9 @@ public interface ISmsSendService {
      * @param phoneNumber
      * @return
      */
-    default SmsResponse sendSms(SmsData smsData, String phoneNumber){
+    default Result<?> sendSms(SmsData smsData, String phoneNumber){
         if (StrUtil.isEmpty(phoneNumber)) {
-            return new SmsResponse();
+            return new Result();
         }
         return this.sendSms(smsData, Collections.singletonList(phoneNumber));
     }
@@ -31,6 +32,6 @@ public interface ISmsSendService {
      * @param phoneNumbers
      * @return
      */
-    SmsResponse sendSms(SmsData smsData, Collection<String> phoneNumbers);
+    Result<?> sendSms(SmsData smsData, Collection<String> phoneNumbers);
 
 }

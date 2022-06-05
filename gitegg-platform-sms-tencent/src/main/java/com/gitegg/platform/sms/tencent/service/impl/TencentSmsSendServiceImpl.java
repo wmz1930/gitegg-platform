@@ -1,7 +1,8 @@
 package com.gitegg.platform.sms.tencent.service.impl;
 
+import com.gitegg.platform.base.enums.ResultCodeEnum;
+import com.gitegg.platform.base.result.Result;
 import com.gitegg.platform.sms.domain.SmsData;
-import com.gitegg.platform.sms.domain.SmsResponse;
 import com.gitegg.platform.sms.service.ISmsSendService;
 import com.gitegg.platform.sms.tencent.props.TencentSmsProperties;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
@@ -17,6 +18,7 @@ import java.util.Collection;
 
 /**
  * 腾讯云短信发送
+ * @author GitEgg
  */
 @Slf4j
 @AllArgsConstructor
@@ -29,8 +31,7 @@ public class TencentSmsSendServiceImpl implements ISmsSendService {
     private final SmsClient client;
 
     @Override
-    public SmsResponse sendSms(SmsData smsData, Collection<String> phoneNumbers) {
-        SmsResponse smsResponse = new SmsResponse();
+    public Result<?> sendSms(SmsData smsData, Collection<String> phoneNumbers) {
 
         SendSmsRequest request = new SendSmsRequest();
         request.setSmsSdkAppid(properties.getSmsSdkAppId());
@@ -59,21 +60,19 @@ public class TencentSmsSendServiceImpl implements ISmsSendService {
             //如果是批量发送，那么腾讯云短信会返回每条短信的发送状态，这里默认返回第一条短信的状态
             if (null != sendSmsResponse && null != sendSmsResponse.getSendStatusSet()) {
                 SendStatus sendStatus = sendSmsResponse.getSendStatusSet()[0];
-                if (this.successCode.equals(sendStatus.getCode()))
+                if (TencentSmsSendServiceImpl.successCode.equals(sendStatus.getCode()))
                 {
-                    smsResponse.setSuccess(true);
+                    return Result.success(sendStatus.getMessage());
                 }
                 else
                 {
-                    smsResponse.setCode(sendStatus.getCode());
-                    smsResponse.setMessage(sendStatus.getMessage());
+                    log.error("Send Tencent Sms Fail: [code={}, message={}]", sendStatus.getCode(), sendStatus.getMessage());
+                    return Result.error(ResultCodeEnum.SMS_SEND_FAILED, sendStatus.getMessage());
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            log.error("Send Aliyun Sms Fail: {}", e);
-            smsResponse.setMessage("Send Aliyun Sms Fail!");
+            log.error("Send Tencent Sms Fail: {}", e);
         }
-        return smsResponse;
+        return Result.error(ResultCodeEnum.SMS_SEND_ERROR);
     }
 }

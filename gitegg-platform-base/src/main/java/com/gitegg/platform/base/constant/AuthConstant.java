@@ -67,6 +67,26 @@ public class AuthConstant {
      * 当开启多租户模式时，Redis缓存权限规则key
      */
     public static final String TENANT_RESOURCE_ROLES_KEY = "auth:tenant:resource:roles:";
+    
+    /**
+     * Redis第三方登录配置source key
+     */
+    public static final String SOCIAL_SOURCE_KEY = "social:source";
+    
+    /**
+     * 当开启多租户模式时，Redis第三方登录配置source key
+     */
+    public static final String SOCIAL_TENANT_SOURCE_KEY = "social:tenant:source:";
+    
+    /**
+     * Redis第三方登录配置config key
+     */
+    public static final String SOCIAL_CONFIG_KEY = "social:config";
+    
+    /**
+     * 当开启多租户模式时，Redis第三方登录配置config key
+     */
+    public static final String SOCIAL_TENANT_CONFIG_KEY = "social:tenant:config:";
 
     /**
      * 黑名单token前缀
@@ -92,6 +112,11 @@ public class AuthConstant {
      * 客户端id
      */
     public static final String AUTH_CLIENT_ID = "client_id";
+    
+    /**
+     * 第三方登录的校验码
+     */
+    public static final String SOCIAL_VALIDATION_PREFIX = "OAUTH:GRANT:SOCIAL:VALIDATION:CODE:";
 
     /**
      * 手机号

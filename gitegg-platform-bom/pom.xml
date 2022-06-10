@@ -87,6 +87,8 @@
         <just.auth.version>1.16.5</just.auth.version>
         <!-- JustAuth SpringBoot集成 -->
         <just.auth.spring.version>1.4.0</just.auth.spring.version>
+        <!--分布式任务调度平台XXL-JOB核心包-->
+        <xxl-job.version>2.3.1</xxl-job.version>
         <!-- SpringBoot版本号 -->
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <!-- SpringCloud版本号 -->
@@ -279,6 +281,12 @@
                 <artifactId>gitegg-platform-code-generator</artifactId>
                 <version>${gitegg.project.version}</version>
             </dependency>
+            <!-- gitegg扩展xxl-job分布式任务调度 -->
+            <dependency>
+                <groupId>com.gitegg.platform</groupId>
+                <artifactId>gitegg-platform-xxl-job</artifactId>
+                <version>${gitegg.project.version}</version>
+            </dependency>
             <!-- hutool Java常用工具包-->
             <dependency>
                 <groupId>cn.hutool</groupId>
@@ -463,6 +471,12 @@
                 <groupId>com.xkcoding.justauth</groupId>
                 <artifactId>justauth-spring-boot-starter</artifactId>
                 <version>${just.auth.spring.version}</version>
+            </dependency>
+            <!--分布式任务调度平台XXL-JOB核心包-->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>${xxl-job.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

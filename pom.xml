@@ -41,6 +41,7 @@
         <module>gitegg-platform-wechat</module>
         <module>gitegg-platform-log</module>
         <module>gitegg-platform-justauth</module>
+        <module>gitegg-platform-xxl-job</module>
     </modules>
 
     <properties>

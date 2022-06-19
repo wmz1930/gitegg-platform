@@ -94,3 +94,4 @@ hs_err_pid*
 *.versionsBackup
 target
 /gitegg-platform-justauth/gitegg-platform-justauth.iml
+/gitegg-platform-xxl-job/gitegg-platform-xxl-job.iml

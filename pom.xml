@@ -9,7 +9,7 @@
     <name>${project.artifactId}</name>
     <description>GitEgg is a rapid development platform</description>
     <url>https://github.com/wmz1930/gitegg-platform</url>
-    <version>1.0.1.RELEASE</version>
+    <version>1.0.2.RELEASE</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -216,7 +216,7 @@
                             </additionalJOptions>
                         </configuration>
                     </plugin>
-                    <!-- GPG
+                    <!-- GPG -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -229,7 +229,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>-->
+                    </plugin>
                     <!--Compiler-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

@@ -9,7 +9,7 @@
     <name>${project.artifactId}</name>
     <description>GitEgg is a rapid development platform</description>
     <url>https://github.com/wmz1930/gitegg-platform</url>
-    <version>1.0.2.RELEASE</version>
+    <version>1.0.3.RELEASE</version>
     <packaging>pom</packaging>
 
     <modules>

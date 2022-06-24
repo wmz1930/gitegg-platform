@@ -41,11 +41,17 @@ public class GitEggJustAuthAutoConfiguration {
 
     @Value("${justauth.http-util:default}")
     private String httpUtilType;
+
+    /**
+     * 是否开启租户模式
+     */
+    @Value("${tenant.enable}")
+    private Boolean enable;
     
     @Bean
     @ConditionalOnProperty(prefix = "justauth", value = "enabled", havingValue = "true", matchIfMissing = true)
     public GitEggAuthRequestFactory gitEggAuthRequestFactory(JustAuthProperties justAuthProperties) {
-        return new GitEggAuthRequestFactory(authRequestFactory, redisTemplate, justAuthProperties);
+        return new GitEggAuthRequestFactory(authRequestFactory, redisTemplate, justAuthProperties, enable);
     }
 
     /**

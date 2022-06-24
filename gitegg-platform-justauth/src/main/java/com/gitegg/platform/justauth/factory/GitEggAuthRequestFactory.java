@@ -16,7 +16,6 @@ import com.xkcoding.justauth.AuthRequestFactory;
 import com.xkcoding.justauth.autoconfigure.CacheProperties;
 import com.xkcoding.justauth.autoconfigure.ExtendProperties;
 import com.xkcoding.justauth.autoconfigure.JustAuthProperties;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.zhyd.oauth.config.AuthConfig;
 import me.zhyd.oauth.config.AuthDefaultSource;
@@ -40,25 +39,24 @@ import java.util.List;
  * @author GitEgg
  */
 @Slf4j
-@RequiredArgsConstructor
 public class GitEggAuthRequestFactory {
     
-    private final RedisTemplate redisTemplate;
+    private RedisTemplate redisTemplate;
     
-    private final AuthRequestFactory authRequestFactory;
+    private AuthRequestFactory authRequestFactory;
     
-    private final JustAuthProperties justAuthProperties;
+    private JustAuthProperties justAuthProperties;
     
     /**
      * 是否开启租户模式
      */
-    @Value("${tenant.enable}")
     private Boolean enable;
 
-    public GitEggAuthRequestFactory(AuthRequestFactory authRequestFactory, RedisTemplate redisTemplate, JustAuthProperties justAuthProperties) {
+    public GitEggAuthRequestFactory(AuthRequestFactory authRequestFactory, RedisTemplate redisTemplate, JustAuthProperties justAuthProperties, Boolean enable) {
         this.authRequestFactory = authRequestFactory;
         this.redisTemplate = redisTemplate;
         this.justAuthProperties = justAuthProperties;
+        this.enable = enable;
     }
 
     /**
@@ -144,21 +142,15 @@ public class GitEggAuthRequestFactory {
                             authConfig.setScopes(Arrays.asList(scopes));
                         }
                         // 设置proxy
-                        if (StrUtil.isAllNotEmpty(justAuthSource.getProxyType(), justAuthSource.getProxyHostName())
-                                && null !=  justAuthSource.getProxyPort())
+                        if (!StringUtils.isEmpty(justAuthSource.getProxyType()) && !StringUtils.isEmpty(justAuthSource.getProxyHostName())
+                                && null != justAuthSource.getProxyPort())
                         {
-                            JustAuthProperties.JustAuthProxyConfig proxyConfig = new JustAuthProperties.JustAuthProxyConfig();
-                            proxyConfig.setType(justAuthSource.getProxyType());
-                            proxyConfig.setHostname(justAuthSource.getProxyHostName());
-                            proxyConfig.setPort(justAuthSource.getProxyPort());
-                            if (null != proxyConfig) {
-                                HttpConfig httpConfig = HttpConfig.builder().timeout(justAuthSource.getProxyPort()).proxy(new Proxy(Proxy.Type.valueOf(proxyConfig.getType()), new InetSocketAddress(proxyConfig.getHostname(), proxyConfig.getPort()))).build();
-                                if (null != justAuthConfig.getHttpTimeout())
-                                {
-                                    httpConfig.setTimeout(justAuthConfig.getHttpTimeout());
-                                }
-                                authConfig.setHttpConfig(httpConfig);
+                            HttpConfig httpConfig = HttpConfig.builder().proxy(new Proxy(Proxy.Type.valueOf(justAuthSource.getProxyType()), new InetSocketAddress(justAuthSource.getProxyHostName(), justAuthSource.getProxyPort()))).build();
+                            if (null != justAuthConfig.getHttpTimeout())
+                            {
+                                httpConfig.setTimeout(justAuthConfig.getHttpTimeout());
                             }
+                            authConfig.setHttpConfig(httpConfig);
                         }
                         // 组装好配置后，从配置生成request,判断是默认的第三方登录还是自定义第三方登录
                         if (SourceTypeEnum.DEFAULT.key.equals(justAuthSource.getSourceType()))

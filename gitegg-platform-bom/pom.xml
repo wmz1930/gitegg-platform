@@ -287,6 +287,12 @@
                 <artifactId>gitegg-platform-xxl-job</artifactId>
                 <version>${gitegg.project.version}</version>
             </dependency>
+            <!-- gitegg扩展xxl-job分布式任务调度 -->
+            <dependency>
+                <groupId>com.gitegg.platform</groupId>
+                <artifactId>gitegg-platform-mail</artifactId>
+                <version>${gitegg.project.version}</version>
+            </dependency>
             <!-- hutool Java常用工具包-->
             <dependency>
                 <groupId>cn.hutool</groupId>

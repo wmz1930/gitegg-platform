@@ -42,6 +42,7 @@
         <module>gitegg-platform-log</module>
         <module>gitegg-platform-justauth</module>
         <module>gitegg-platform-xxl-job</module>
+        <module>gitegg-platform-mail</module>
     </modules>
 
     <properties>

@@ -87,8 +87,10 @@
         <just.auth.version>1.16.5</just.auth.version>
         <!-- JustAuth SpringBoot集成 -->
         <just.auth.spring.version>1.4.0</just.auth.spring.version>
-        <!--分布式任务调度平台XXL-JOB核心包-->
-        <xxl-job.version>2.3.1</xxl-job.version>
+        <!-- 分布式任务调度平台XXL-JOB核心包 -->
+        <xxl.job.version>2.3.1</xxl.job.version>
+        <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->
+        <transmittable.thread.local.version>2.13.1</transmittable.thread.local.version>
         <!-- SpringBoot版本号 -->
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <!-- SpringCloud版本号 -->
@@ -482,7 +484,13 @@
             <dependency>
                 <groupId>com.xuxueli</groupId>
                 <artifactId>xxl-job-core</artifactId>
-                <version>${xxl-job.version}</version>
+                <version>${xxl.job.version}</version>
+            </dependency>
+            <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>transmittable-thread-local</artifactId>
+                <version>${transmittable.thread.local.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

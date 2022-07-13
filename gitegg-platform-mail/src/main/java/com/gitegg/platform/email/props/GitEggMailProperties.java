@@ -23,7 +23,7 @@ public class GitEggMailProperties extends MailProperties {
     private Long tenantId;
 
     /**
-     * 租户id
+     * 渠道id
      */
     private String channelCode;
 

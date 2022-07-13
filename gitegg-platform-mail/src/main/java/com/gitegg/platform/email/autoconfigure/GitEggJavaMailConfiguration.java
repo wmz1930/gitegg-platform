@@ -19,7 +19,6 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
  */
 @Slf4j
 @Configuration
-//@ConditionalOnBean(JavaMailSenderImpl.class)
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class GitEggJavaMailConfiguration {
 
@@ -34,7 +33,7 @@ public class GitEggJavaMailConfiguration {
     private Boolean enable;
     
     @Bean
-    public JavaMailSenderFactory gitEggAuthRequestFactory() {
+    public JavaMailSenderFactory gitEggJavaMailSenderFactory() {
         return new JavaMailSenderFactory(redisTemplate, javaMailSenderImpl, enable);
     }
 }

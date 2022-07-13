@@ -21,7 +21,7 @@ public class GitEggJavaMailSenderImpl extends JavaMailSenderImpl {
     private Long tenantId;
 
     /**
-     * 租户id
+     * 渠道编码
      */
     private String channelCode;
 

@@ -33,8 +33,6 @@
         <!-- GitEgg项目统一设置版本号 -->
         <gitegg.project.version>1.0.3.RELEASE</gitegg.project.version>
 
-        <!-- Spring Cloud Alibaba -->
-        <spring.cloud.alibaba>2.2.7.RELEASE</spring.cloud.alibaba>
         <!-- mysql数据库驱动 -->
         <mysql.connector.version>8.0.17</mysql.connector.version>
         <!-- postgresql数据库驱动 -->
@@ -91,6 +89,10 @@
         <xxl.job.version>2.3.1</xxl.job.version>
         <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->
         <transmittable.thread.local.version>2.13.1</transmittable.thread.local.version>
+        <!-- spring-boot-admin 微服务监控-->
+        <spring.boot.admin.version>2.3.1</spring.boot.admin.version>
+        <!-- Spring Cloud Alibaba -->
+        <spring.cloud.alibaba>2.2.8.RELEASE</spring.cloud.alibaba>
         <!-- SpringBoot版本号 -->
         <spring.boot.version>2.3.12.RELEASE</spring.boot.version>
         <!-- SpringCloud版本号 -->
@@ -491,6 +493,19 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>transmittable-thread-local</artifactId>
                 <version>${transmittable.thread.local.version}</version>
+            </dependency>
+            <!-- spring-boot-admin监控 服务端 https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-server -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring.boot.admin.version}</version>
+            </dependency>
+
+            <!-- spring-boot-admin监控 客户端 https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring.boot.admin.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -217,7 +217,7 @@
                             </additionalJOptions>
                         </configuration>
                     </plugin>
-                    <!-- GPG -->
+                    <!-- GPG
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
@@ -230,7 +230,7 @@
                                 </goals>
                             </execution>
                         </executions>
-                    </plugin>
+                    </plugin> -->
                     <!--Compiler-->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>

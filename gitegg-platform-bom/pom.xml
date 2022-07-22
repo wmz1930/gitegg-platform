@@ -87,6 +87,8 @@
         <just.auth.spring.version>1.4.0</just.auth.spring.version>
         <!-- 分布式任务调度平台XXL-JOB核心包 -->
         <xxl.job.version>2.3.1</xxl.job.version>
+        <!--Flowable工作流-->
+        <flowable.version>6.7.2</flowable.version>
         <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->
         <transmittable.thread.local.version>2.13.1</transmittable.thread.local.version>
         <!-- spring-boot-admin 微服务监控-->
@@ -291,7 +293,7 @@
                 <artifactId>gitegg-platform-xxl-job</artifactId>
                 <version>${gitegg.project.version}</version>
             </dependency>
-            <!-- gitegg扩展xxl-job分布式任务调度 -->
+            <!-- gitegg扩展mail邮件发送 -->
             <dependency>
                 <groupId>com.gitegg.platform</groupId>
                 <artifactId>gitegg-platform-mail</artifactId>
@@ -488,6 +490,26 @@
                 <artifactId>xxl-job-core</artifactId>
                 <version>${xxl.job.version}</version>
             </dependency>
+            <!--flowable工作流-->
+            <!-- https://mvnrepository.com/artifact/org.flowable/flowable-spring-boot-starter -->
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-spring-boot-starter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+            <!--flowable整合设计器-->
+            <!-- https://mvnrepository.com/artifact/org.flowable/flowable-ui-modeler-rest -->
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-ui-modeler-rest</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.flowable/flowable-json-converter -->
+            <dependency>
+                <groupId>org.flowable</groupId>
+                <artifactId>flowable-json-converter</artifactId>
+                <version>${flowable.version}</version>
+            </dependency>
             <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->
             <dependency>
                 <groupId>com.alibaba</groupId>
@@ -512,7 +534,7 @@
 
     <build>
         <plugins>
-            <!-- GPG -->
+            <!-- GPG
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -525,7 +547,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 

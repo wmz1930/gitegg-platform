@@ -1,5 +1,8 @@
 package com.gitegg.platform.base.util;
 
+import org.apache.commons.lang3.StringUtils;
+
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -10,7 +13,9 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.time.temporal.TemporalUnit;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * 时间工具类
@@ -37,6 +42,16 @@ public class LocalDateTimeUtils {
      * 英文全称 如：2010-12-01 23:15:06
      */
     public static String FORMAT_LONG = "yyyy-MM-dd HH:mm:ss";
+
+    /**
+     * 英文全称无空格时间戳 如：20101201231506
+     */
+    public static String FORMAT_LONG_NO = "yyyyMMddHHmmss";
+
+    /**
+     * 英文全称无空格时间戳带毫秒 如：20101201231506000
+     */
+    public static String FORMAT_LONG_SSS = "yyyyMMddHHmmssSSS";
     
     /**
      * 精确到毫秒的完整时间 如：yyyy-MM-dd HH:mm:ss.S
@@ -223,13 +238,58 @@ public class LocalDateTimeUtils {
         LocalDateTime firstOfDay = localDateTime.with(TemporalAdjusters.firstDayOfMonth()).with(LocalTime.MIN);
         return firstOfDay;
     }
+
     /**
-                * 获取某月最后一天的23:59:59
+     * 获取某月最后一天的23:59:59
      * @return
      */
     public static LocalDateTime getLastDayOfMonth(LocalDateTime localDateTime){
         LocalDateTime lastOfDay = localDateTime.with(TemporalAdjusters.lastDayOfMonth()).with(LocalTime.MAX);
         return lastOfDay;
+    }
+
+    /**
+     * 格式化Excel时间 默认 yyyy-MM-dd
+     * @param day
+     * @return yyyy-MM-dd
+     */
+    public static String formatExcelDate(int day) {
+        String formatExcelDate = LocalDateTimeUtils.formatExcelDate(day, LocalDateTimeUtils.FORMAT_FULL);
+        return formatExcelDate;
+    }
+
+    /**
+     * 格式化Excel时间 自定义格式
+     * @param day
+     * @return yyyy-MM-dd
+     */
+    public static String formatExcelDate(int day, String timeFormat) {
+        LocalDateTime localDateTime = LocalDateTime.of(1900,0,-1, 0, 0, 0);
+        String formatExcelDate = LocalDateTimeUtils.formatTime(localDateTime.plusDays(day), timeFormat);
+        return formatExcelDate;
+    }
+
+    /**
+     * 判断是否是日期格式的字符串
+     * @param dateValue
+     * @param dateFormat
+     * @return
+     */
+    public static boolean isDateString(String dateValue, String dateFormat) {
+        if (StringUtils.isEmpty(dateValue)) {
+            return false;
+        }
+        try {
+            SimpleDateFormat fmt = new SimpleDateFormat(dateFormat);
+            java.util.Date dd = fmt.parse(dateValue);
+            if (dateValue.equals(fmt.format(dd))) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            return false;
+        }
     }
 
 }

@@ -158,12 +158,13 @@ public class LogAspect {
                     .getRequest();
             String ip = request.getRemoteAddr();
             GitEggLog gitEggLog = new GitEggLog();
+            gitEggLog.setLogType("1");
             gitEggLog.setMethodName(joinPoint.getSignature().getName());
             gitEggLog.setInParams(String.valueOf(inParams));
             gitEggLog.setOutParams(String.valueOf(outParams));
             gitEggLog.setOperationIp(ip);
             gitEggLog.setOperationName(operationName);
-            log.log(LogLevelConstant.OPERATION_LEVEL,LogLevelConstant.OPERATION_LEVEL_MESSAGE, JsonUtils.objToJson(gitEggLog));
+            log.log(LogLevelConstant.OPERATION_LEVEL, LogLevelConstant.OPERATION_LEVEL_MESSAGE, JsonUtils.objToJson(gitEggLog));
         } catch (Exception e) {
             log.error("addSysLog日志记录异常,异常信息:{}", e.getMessage());
             throw e;

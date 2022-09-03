@@ -14,6 +14,11 @@ public class AuthConstant {
     public static final String TENANT_ID = "TenantId";
 
     /**
+     * 默认租户ID
+     */
+    public static final Long DEFAULT_TENANT_ID = 0L;
+
+    /**
      * JWT存储权限前缀
      */
     public static final String AUTHORITY_PREFIX = "ROLE_";

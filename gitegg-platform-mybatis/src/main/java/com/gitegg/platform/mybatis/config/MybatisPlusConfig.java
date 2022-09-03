@@ -17,7 +17,6 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
-@MapperScan(basePackages  = {"com.**.**.mapper.**"})
 public class MybatisPlusConfig {
 
     private final TenantLineInnerInterceptor tenantLineInnerInterceptor;

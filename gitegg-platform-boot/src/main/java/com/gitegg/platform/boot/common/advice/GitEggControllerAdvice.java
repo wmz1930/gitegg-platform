@@ -40,15 +40,21 @@ public class GitEggControllerAdvice {
     private String serverName;
 
     /**
+     * 报错信息是否显示服务名
+     */
+    @Value("${system.message-show-application: false}")
+    private Boolean showServerName;
+
+    /**
      * 微服务系统标识
      */
     private String errorSystem;
 
     @PostConstruct
     public void init() {
-        this.errorSystem = new StringBuffer()
+        this.errorSystem = showServerName ? new StringBuffer()
                 .append(this.serverName)
-                .append(": ").toString();
+                .append(": ").toString() : "";
     }
 
     /**

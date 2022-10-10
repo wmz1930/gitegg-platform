@@ -39,3 +39,11 @@ aj:
     aes-status : true
     #滑动干扰项(0/1/2)
     interference-options : 2
+    font-style: 1
+    font-size: 25
+    history-data-clear-enable: false
+    req-frequency-limit-enable: false
+    req-get-lock-limit: 5
+    req-get-lock-seconds: 360
+    req-get-minute-limit: 30
+    req-check-minute-limit: 30

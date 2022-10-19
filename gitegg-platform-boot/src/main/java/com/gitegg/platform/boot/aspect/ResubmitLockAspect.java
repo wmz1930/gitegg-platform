@@ -47,11 +47,6 @@ public class ResubmitLockAspect {
 
     private final IDistributedLockService distributedLockService;
 
-    /**
-     * Before切点
-     */
-    @Pointcut("@annotation(com.gitegg.platform.base.annotation.resubmit.ResubmitLock)")
-    public void resubmitLock() {}
 
     /**
      * 前置通知 防止重复提交
@@ -60,17 +55,15 @@ public class ResubmitLockAspect {
      * @param resubmitLock 注解配置
      */
     @Before("@annotation(resubmitLock)")
-    public Object resubmitCheck(JoinPoint joinPoint, ResubmitLock resubmitLock) throws Throwable {
+    public void resubmitCheck(JoinPoint joinPoint, ResubmitLock resubmitLock) throws Throwable {
 
         final Object[] args = joinPoint.getArgs();
         final String[] conditions = resubmitLock.conditions();
 
         //根据条件判断是否需要进行防重复提交检查
-        if (!ExpressionUtils.getConditionValue(args, conditions) || ArrayUtils.isEmpty(args)) {
-            return ((ProceedingJoinPoint) joinPoint).proceed();
+        if (ExpressionUtils.getConditionValue(args, conditions) && !ArrayUtils.isEmpty(args)) {
+            doCheck(resubmitLock, args);
         }
-        doCheck(resubmitLock, args);
-        return ((ProceedingJoinPoint) joinPoint).proceed();
     }
 
     /**

@@ -43,14 +43,14 @@ import java.util.*;
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
 public class GitEggDataPermissionHandler implements DataPermissionHandler {
 
-    @Value(("${tenant.enable}"))
+    @Value("${tenant.enable}")
     private Boolean enable;
 
     /**
      * 注解方式默认关闭,这里只是说明一种实现方式，实际使用时，使用配置的方式即可
      */
-    @Value(("${data-permission.annotation-enable}"))
-    private Boolean annotationEnable = false;
+    @Value("${data-permission.annotation-enable: false}")
+    private Boolean annotationEnable;
 
     private final RedisTemplate redisTemplate;
 
@@ -83,7 +83,7 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
                     }
                 }
                 // mappedStatementId是否有配置数据权限
-                if (ObjectUtils.isNotEmpty(dataPermissionEntity))
+                if (ObjectUtils.isNotEmpty(dataPermissionEntity) && GitEggConstant.ENABLE == dataPermissionEntity.getStatus().intValue())
                 {
                     dataPermissionFilter(loginUser, dataPermissionEntity, plainSelect);
                 }
@@ -234,7 +234,7 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
                     Join join = new Join();
                     join.withRightItem(innerTable);
                     EqualsTo equalsTo = new EqualsTo();
-                    equalsTo.setLeftExpression(new Column(dataTable, DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
+                    equalsTo.setLeftExpression(new Column(dataTable, DataPermissionConstant.DATA_PERMISSION_TABLE_NAME.equalsIgnoreCase(dataTableName) ? DataPermissionConstant.DATA_PERMISSION_ID : DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
                     equalsTo.setRightExpression(new Column(innerTable, DataPermissionConstant.DATA_PERMISSION_ID));
                     join.withOnExpression(equalsTo);
                     plainSelect.addJoins(join);
@@ -268,7 +268,7 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
             else
             {
                 InExpression inExpression = new InExpression();
-                inExpression.setLeftExpression(buildColumn(dataTableAlias, DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
+                inExpression.setLeftExpression(buildColumn(dataTableAlias, DataPermissionConstant.DATA_PERMISSION_TABLE_NAME.equalsIgnoreCase(dataTableName) ? DataPermissionConstant.DATA_PERMISSION_ID : DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
                 SubSelect subSelect = new SubSelect();
                 PlainSelect select = new PlainSelect();
                 select.setSelectItems(Collections.singletonList(new SelectExpressionItem(new Column(DataPermissionConstant.DATA_PERMISSION_ID))));
@@ -306,7 +306,7 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
         // 只查询用户拥有机构的数据，不包含子机构
         else if (DataPermissionTypeEnum.DATA_PERMISSION_ORG.getLevel().equals(dataPermissionType)) {
             InExpression inExpression = new InExpression();
-            inExpression.setLeftExpression(buildColumn(dataTableAlias, DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
+            inExpression.setLeftExpression(buildColumn(dataTableAlias, DataPermissionConstant.DATA_PERMISSION_TABLE_NAME.equalsIgnoreCase(dataTableName) ? DataPermissionConstant.DATA_PERMISSION_ID : DataPermissionConstant.DATA_PERMISSION_ORGANIZATION_ID));
             ExpressionList expressionList = new ExpressionList();
             List<Expression> expressions = new ArrayList<>();
             expressions.add(new LongValue(user.getOrganizationId()));

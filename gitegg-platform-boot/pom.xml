@@ -5,7 +5,7 @@
     <parent>
         <artifactId>gitegg-platform</artifactId>
         <groupId>com.gitegg.platform</groupId>
-        <version>1.0.5.RELEASE</version>
+        <version>1.0.6.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -115,6 +115,12 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>transmittable-thread-local</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-core</artifactId>
+            <version>3.4.3.1</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

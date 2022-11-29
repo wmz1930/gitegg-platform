@@ -5,7 +5,7 @@
     <parent>
         <artifactId>gitegg-platform</artifactId>
         <groupId>com.gitegg.platform</groupId>
-        <version>1.0.5.RELEASE</version>
+        <version>1.0.6.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,22 +14,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- 微信小程序 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-miniapp-spring-boot-starter -->
+        <!-- 微信小程序 https://github.com/Wechat-Group/WxJava/tree/develop/weixin-java-miniapp -->
         <dependency>
             <groupId>com.github.binarywang</groupId>
-            <artifactId>wx-java-miniapp-spring-boot-starter</artifactId>
-        </dependency>
-        <!-- 微信开放平台 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-open-spring-boot-starter -->
-        <dependency>
-            <groupId>com.github.binarywang</groupId>
-            <artifactId>wx-java-open-spring-boot-starter</artifactId>
-        </dependency>
-        <!-- 微信公众号 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-mp-spring-boot-starter -->
-        <dependency>
-            <groupId>com.github.binarywang</groupId>
-            <artifactId>wx-java-mp-spring-boot-starter</artifactId>
+            <artifactId>weixin-java-miniapp</artifactId>
         </dependency>
     </dependencies>
-
 
 </project>

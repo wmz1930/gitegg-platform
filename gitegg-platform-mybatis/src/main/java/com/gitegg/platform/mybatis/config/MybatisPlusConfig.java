@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.inner.*;
 import com.gitegg.platform.mybatis.handler.GitEggDataPermissionHandler;
 import com.gitegg.platform.mybatis.interceptor.GitEggDataPermissionInterceptor;
+import com.gitegg.platform.mybatis.interceptor.GitEggPaginationInnerInterceptor;
 import com.gitegg.platform.mybatis.props.TenantProperties;
 import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.annotation.MapperScan;
@@ -43,7 +44,7 @@ public class MybatisPlusConfig {
         interceptor.addInnerInterceptor(new GitEggDataPermissionInterceptor(gitEggDataPermissionHandler));
 
         //分页插件
-        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        interceptor.addInnerInterceptor(new GitEggPaginationInnerInterceptor(DbType.MYSQL));
 
         //防止全表更新与删除插件: BlockAttackInnerInterceptor
         BlockAttackInnerInterceptor blockAttackInnerInterceptor = new BlockAttackInnerInterceptor();

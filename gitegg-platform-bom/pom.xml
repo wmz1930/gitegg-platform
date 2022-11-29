@@ -16,7 +16,7 @@
     <artifactId>gitegg-platform-bom</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
-    <version>1.0.5.RELEASE</version>
+    <version>1.0.6.RELEASE</version>
 
     <properties>
         <!-- jdk版本1.8 -->
@@ -31,7 +31,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- GitEgg项目统一设置版本号 -->
-        <gitegg.project.version>1.0.5.RELEASE</gitegg.project.version>
+        <gitegg.project.version>1.0.6.RELEASE</gitegg.project.version>
 
         <!-- mysql数据库驱动 -->
         <mysql.connector.version>8.0.17</mysql.connector.version>
@@ -68,7 +68,7 @@
         <!-- Easy-Captcha图形验证码 -->
         <easy.captcha.version>1.6.2</easy.captcha.version>
         <!-- WxJava微信接口版本 -->
-        <wx.version>4.0.0</wx.version>
+        <wx.version>4.4.0</wx.version>
         <!-- 阿里云短信版本 -->
         <sms.aliyun.version>4.5.18</sms.aliyun.version>
         <!-- 阿里云短信api版本 -->
@@ -443,19 +443,7 @@
             <!-- 微信小程序 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-miniapp-spring-boot-starter -->
             <dependency>
                 <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-miniapp-spring-boot-starter</artifactId>
-                <version>${wx.version}</version>
-            </dependency>
-            <!-- 微信开放平台 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-open-spring-boot-starter -->
-            <dependency>
-                <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-open-spring-boot-starter</artifactId>
-                <version>${wx.version}</version>
-            </dependency>
-            <!-- 微信公众号 https://mvnrepository.com/artifact/com.github.binarywang/wx-java-mp-spring-boot-starter -->
-            <dependency>
-                <groupId>com.github.binarywang</groupId>
-                <artifactId>wx-java-mp-spring-boot-starter</artifactId>
+                <artifactId>weixin-java-miniapp</artifactId>
                 <version>${wx.version}</version>
             </dependency>
             <!-- 阿里云短信服务 https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core -->
@@ -557,7 +545,7 @@
 
     <build>
         <plugins>
-            <!-- GPG -->
+            <!-- GPG
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -570,7 +558,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin> -->
         </plugins>
     </build>
 

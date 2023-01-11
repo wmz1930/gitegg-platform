@@ -83,14 +83,16 @@ public class GitEggAuthRequestFactory {
     
         // 组装多租户的缓存配置key
         String authConfigKey = AuthConstant.SOCIAL_TENANT_CONFIG_KEY;
+        String mapKey = AuthConstant.SOCIAL_DEFAULT;
         if (enable) {
             authConfigKey += GitEggAuthUtils.getTenantId();
+            mapKey = GitEggAuthUtils.getTenantId();
         } else {
             authConfigKey = AuthConstant.SOCIAL_CONFIG_KEY;
         }
     
         // 获取主配置，每个租户只有一个主配置
-        String sourceConfigStr = (String) redisTemplate.opsForHash().get(authConfigKey, GitEggAuthUtils.getTenantId());
+        String sourceConfigStr = (String) redisTemplate.opsForHash().get(authConfigKey, mapKey);
         AuthConfig authConfig = null;
         JustAuthSource justAuthSource = null;
         AuthRequest tenantIdAuthRequest = null;
@@ -117,7 +119,6 @@ public class GitEggAuthRequestFactory {
                         cacheProperties = justAuthProperties.getCache();
                     }
                     
-    
                     GitEggRedisStateCache gitEggRedisStateCache =
                             new GitEggRedisStateCache(redisTemplate, cacheProperties, enable);
                     

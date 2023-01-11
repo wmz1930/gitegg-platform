@@ -74,6 +74,11 @@ public class AuthConstant {
     public static final String TENANT_RESOURCE_ROLES_KEY = "auth:tenant:resource:roles:";
     
     /**
+     * Redis第三方登录 关闭多租户时配置map的key
+     */
+    public static final String SOCIAL_DEFAULT = "SocialDefault";
+    
+    /**
      * Redis第三方登录配置source key
      */
     public static final String SOCIAL_SOURCE_KEY = "social:source";

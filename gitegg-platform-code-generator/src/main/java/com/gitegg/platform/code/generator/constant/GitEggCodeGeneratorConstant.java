@@ -29,6 +29,11 @@ public class GitEggCodeGeneratorConstant {
      * FORM_FIELDS
      */
     public static final String DICT_CODE_FIELDS = "dictCodeFields";
+    
+    /**
+     * FORM_API_FIELDS
+     */
+    public static final String API_FIELDS = "apiFields";
 
     /**
      * FIELDS_JOIN
@@ -94,6 +99,16 @@ public class GitEggCodeGeneratorConstant {
      * VUE_JS_PATH
      */
     public static final String VUE_TABLE_PATH = "vueTablePath";
+    
+    /**
+     * VUE_FORM_PATH
+     */
+    public static final String VUE_FORM_PATH = "vueFormPath";
+    
+    /**
+     * VUE_TS_PATH
+     */
+    public static final String VUE_TS_PATH = "vueTsPath";
 
     /**
      * RESOURCE_MAX_ID

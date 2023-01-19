@@ -9,13 +9,14 @@ import java.util.List;
 
 /**
  * @ClassName: PageResult
- * @Description: 通用分页返回
+ * @Description: 通用分页返回  ，弃用，统一使用Result
  * @author GitEgg
  * @date
  * @param <T>
  */
 @Data
 @ApiModel("通用分页响应类")
+@Deprecated
 public class PageResult<T> {
 
     @ApiModelProperty(value = "是否成功", required = true)

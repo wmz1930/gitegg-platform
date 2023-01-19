@@ -129,8 +129,9 @@ public class AuthConstant {
     public static final String SOCIAL_VALIDATION_PREFIX = "OAUTH:GRANT:SOCIAL:VALIDATION:CODE:";
 
     /**
-     * 手机号
+     * 手机号 ,不再使用，统一使用TokenConstant中的 PHONE_NUMBER
      */
+    @Deprecated
     public static final String PHONE_NUMBER = "phone_number";
 
     public static final String CLIENT_DETAILS_FIELDS = "client_id, client_secret, resource_ids, scope, "

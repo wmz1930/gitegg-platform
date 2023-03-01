@@ -207,14 +207,14 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
                             Table table = (Table)rightItem;
                             // 判断需要inner的主表是否存在
                             if (null == dataTable && table.getName().equalsIgnoreCase(dataTableName)
-                                    && null != dataTable.getAlias() && dataTable.getAlias().getName().equalsIgnoreCase(dataTableAlias))
+                                    && null != table.getAlias() && dataTableAlias.equalsIgnoreCase(table.getAlias().getName()))
                             {
                                 dataTable = table;
                             }
 
                             // 判断需要inner的表是否存在
                             if (table.getName().equalsIgnoreCase(innerTableName)
-                                     && null != table.getAlias() && table.getAlias().getName().equalsIgnoreCase(innerTableAlias))
+                                     && null != table.getAlias() && innerTableAlias.equalsIgnoreCase(table.getAlias().getName()))
                             {
                                 hasPermissionTable = true;
                                 innerTable = table;

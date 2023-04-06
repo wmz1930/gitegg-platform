@@ -16,7 +16,7 @@
     <artifactId>gitegg-platform-bom</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
-    <version>1.0.6.RELEASE</version>
+    <version>1.0.6_4.RELEASE</version>
 
     <properties>
         <!-- jdk版本1.8 -->
@@ -31,14 +31,14 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- GitEgg项目统一设置版本号 -->
-        <gitegg.project.version>1.0.6.RELEASE</gitegg.project.version>
+        <gitegg.project.version>1.0.6_4.RELEASE</gitegg.project.version>
 
         <!-- mysql数据库驱动 -->
         <mysql.connector.version>8.0.17</mysql.connector.version>
         <!-- postgresql数据库驱动 -->
         <postgresql.connector.version>9.1-901.jdbc4</postgresql.connector.version>
         <!-- 数据库连接池Druid -->
-        <druid.version>1.1.22</druid.version>
+        <druid.version>1.2.16</druid.version>
         <!-- Shardingsphere-JDBC -->
         <shardingsphere.jdbc.version>5.0.0-alpha</shardingsphere.jdbc.version>
         <!-- 动态数据源 -->
@@ -68,7 +68,7 @@
         <!-- Easy-Captcha图形验证码 -->
         <easy.captcha.version>1.6.2</easy.captcha.version>
         <!-- WxJava微信接口版本 -->
-        <wx.version>4.4.0</wx.version>
+        <wx.version>4.4.9.B</wx.version>
         <!-- 阿里云短信版本 -->
         <sms.aliyun.version>4.5.18</sms.aliyun.version>
         <!-- 阿里云短信api版本 -->
@@ -78,7 +78,7 @@
         <!-- minio文件存储服务 -->
         <dfs.minio.version>8.2.1</dfs.minio.version>
         <!-- 七牛云文件存储服务 -->
-        <dfs.qiniu.version>7.5.0</dfs.qiniu.version>
+        <dfs.qiniu.version>7.13.0</dfs.qiniu.version>
         <!-- Excel 数据导入导出 -->
         <easyexcel.version>3.1.1</easyexcel.version>
         <!-- 统一POI版本 -->
@@ -539,13 +539,12 @@
                 <artifactId>micrometer-registry-prometheus</artifactId>
                 <version>${micrometer.registry.prometheus.version}</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
-            <!-- GPG
+            <!-- GPG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -558,7 +557,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
         </plugins>
     </build>
 

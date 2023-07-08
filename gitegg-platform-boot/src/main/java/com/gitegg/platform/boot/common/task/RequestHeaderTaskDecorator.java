@@ -2,6 +2,7 @@ package com.gitegg.platform.boot.common.task;
 
 import com.gitegg.platform.boot.util.GitEggWebUtils;
 import org.springframework.core.task.TaskDecorator;
+import org.springframework.util.CollectionUtils;
 
 import java.util.Map;
 
@@ -16,6 +17,11 @@ public class RequestHeaderTaskDecorator implements TaskDecorator {
     public Runnable decorate(Runnable runnable) {
         try {
             Map<String,String> requestHeaders = GitEggWebUtils.getHeaders(GitEggWebUtils.getRequest());
+            Map<String, String> mapLocal = ThreadLocalRequestHeaderContext.get();
+            if (!CollectionUtils.isEmpty(mapLocal))
+            {
+                requestHeaders.putAll(mapLocal);
+            }
             return () -> {
                 try {
                     // 将父线程的requestHeaders设置进子线程里

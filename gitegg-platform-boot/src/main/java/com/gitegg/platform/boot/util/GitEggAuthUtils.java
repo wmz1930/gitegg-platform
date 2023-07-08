@@ -5,6 +5,7 @@ import com.gitegg.platform.base.constant.AuthConstant;
 import com.gitegg.platform.base.domain.GitEggUser;
 import com.gitegg.platform.boot.common.task.ThreadLocalRequestHeaderContext;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.map.CaseInsensitiveMap;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,8 +89,10 @@ public class GitEggAuthUtils {
         Map<String, String> headers = ThreadLocalRequestHeaderContext.get();
         if (null != headers)
         {
+            // CaseInsensitiveMap不区分大小写
+            Map<String, String> headersMap = new CaseInsensitiveMap(headers);
             // request 的header大小写不敏感，在转换时全部转成了小写
-            return headers.get(headerKey.toLowerCase());
+            return headersMap.get(headerKey);
         }
         return null;
     }

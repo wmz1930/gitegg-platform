@@ -5,7 +5,7 @@
     <parent>
         <artifactId>gitegg-platform</artifactId>
         <groupId>com.gitegg.platform</groupId>
-        <version>1.0.6_6.RELEASE</version>
+        <version>1.0.6_7.RELEASE</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -14,6 +14,11 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- gitegg cache自定义扩展 -->
+        <dependency>
+            <groupId>com.gitegg.platform</groupId>
+            <artifactId>gitegg-platform-cache</artifactId>
+        </dependency>
         <!-- 微信小程序 https://github.com/Wechat-Group/WxJava/tree/develop/weixin-java-miniapp -->
         <dependency>
             <groupId>com.github.binarywang</groupId>

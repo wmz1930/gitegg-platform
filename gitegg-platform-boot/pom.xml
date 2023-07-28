@@ -109,6 +109,10 @@
                     <groupId>org.apache.poi</groupId>
                     <artifactId>poi</artifactId>
                 </exclusion>
+                <exclusion>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml-schemas</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <!-- 异步任务，解决线程池中子Thread获取父Thread值的问题 -->

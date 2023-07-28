@@ -16,7 +16,7 @@
     <artifactId>gitegg-platform-bom</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
-    <version>1.0.6_7.RELEASE</version>
+    <version>1.0.6_8.RELEASE</version>
 
     <properties>
         <!-- jdk版本1.8 -->
@@ -31,7 +31,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- GitEgg项目统一设置版本号 -->
-        <gitegg.project.version>1.0.6_7.RELEASE</gitegg.project.version>
+        <gitegg.project.version>1.0.6_8.RELEASE</gitegg.project.version>
 
         <!-- mysql数据库驱动 -->
         <mysql.connector.version>8.0.17</mysql.connector.version>
@@ -544,7 +544,7 @@
 
     <build>
         <plugins>
-            <!-- GPG
+            <!-- GPG -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
@@ -557,7 +557,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
         </plugins>
     </build>
 

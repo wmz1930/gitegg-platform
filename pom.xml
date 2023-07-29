@@ -9,7 +9,7 @@
     <name>${project.artifactId}</name>
     <description>GitEgg is a rapid development platform</description>
     <url>https://github.com/wmz1930/gitegg-platform</url>
-    <version>1.0.6_8.RELEASE</version>
+    <version>1.0.6_9.RELEASE</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -39,6 +39,7 @@
         <module>gitegg-platform-sms-starter</module>
         <module>gitegg-platform-swagger</module>
         <module>gitegg-platform-wechat</module>
+        <module>gitegg-platform-wechat-pay</module>
         <module>gitegg-platform-log</module>
         <module>gitegg-platform-justauth</module>
         <module>gitegg-platform-xxl-job</module>

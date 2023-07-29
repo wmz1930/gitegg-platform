@@ -16,7 +16,7 @@
     <artifactId>gitegg-platform-bom</artifactId>
     <name>${project.artifactId}</name>
     <packaging>pom</packaging>
-    <version>1.0.6_8.RELEASE</version>
+    <version>1.0.6_9.RELEASE</version>
 
     <properties>
         <!-- jdk版本1.8 -->
@@ -31,7 +31,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- GitEgg项目统一设置版本号 -->
-        <gitegg.project.version>1.0.6_8.RELEASE</gitegg.project.version>
+        <gitegg.project.version>1.0.6_9.RELEASE</gitegg.project.version>
 
         <!-- mysql数据库驱动 -->
         <mysql.connector.version>8.0.17</mysql.connector.version>
@@ -444,6 +444,12 @@
             <dependency>
                 <groupId>com.github.binarywang</groupId>
                 <artifactId>weixin-java-miniapp</artifactId>
+                <version>${wx.version}</version>
+            </dependency>
+            <!-- 微信小程序支付 -->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-pay</artifactId>
                 <version>${wx.version}</version>
             </dependency>
             <!-- 阿里云短信服务 https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-core -->

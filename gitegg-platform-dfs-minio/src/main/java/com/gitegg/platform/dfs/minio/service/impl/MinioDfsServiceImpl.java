@@ -118,6 +118,14 @@ public class MinioDfsServiceImpl implements IDfsBaseService {
             e.printStackTrace();
         } catch (XmlParserException e) {
             e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return dfsFile;
     }

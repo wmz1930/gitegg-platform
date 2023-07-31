@@ -129,6 +129,14 @@ public class QiNiuDfsServiceImpl implements IDfsBaseService {
             }
         } catch (Exception e) {
             log.error(e.toString());
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return dfsFile;
     }

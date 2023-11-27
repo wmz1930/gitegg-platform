@@ -52,13 +52,20 @@ public class GitEggDataPermissionHandler implements DataPermissionHandler {
     @Value("${data-permission.annotation-enable: false}")
     private Boolean annotationEnable;
 
+    /**
+     * 排除数据权限的角色
+     */
+    @Value("${system.noDataFilterRole}")
+    private String noDataFilterRole;
+
     private final RedisTemplate redisTemplate;
 
     public void processDataPermission(PlainSelect plainSelect, String mappedStatementId) {
         try {
             GitEggUser loginUser = GitEggAuthUtils.getCurrentUser();
             // 1 当有数据权限配置时才去判断用户是否有数据权限控制
-            if (ObjectUtils.isNotEmpty(loginUser) && CollectionUtils.isNotEmpty(loginUser.getDataPermissionTypeList())) {
+            if (ObjectUtils.isNotEmpty(loginUser) && CollectionUtils.isNotEmpty(loginUser.getDataPermissionTypeList())
+                    && CollectionUtils.isNotEmpty(loginUser.getRoleKeyList()) && !loginUser.getRoleKeyList().contains(noDataFilterRole)) {
                 // 1 根据系统配置的数据权限拼装sql
                 StringBuffer statementSb = new StringBuffer();
                 if (enable)
